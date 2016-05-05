@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
              android:src="@drawable/ic_camera"/>
     </LinearLayout>
- <!--   <Button
+   <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
@@ -113,7 +113,7 @@
         android:layout_centerHorizontal="true"
         android:onClick="save"
         />
--->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
