@@ -101,16 +101,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (success == 1) {
                     Log.d("Success!", message);
-                    Toast.makeText(LoginActivity.this, message,
-                            Toast.LENGTH_LONG).show();
+                   // Toast.makeText(LoginActivity.this, message,Toast.LENGTH_LONG).show();
                     Intent i =new Intent(LoginActivity.this,MainActivity.class);
                   i.putExtra("email",userName.getText().toString());
                     startActivity(i);
 
                 } else {
                     Log.d("Failure", message);
-                    Toast.makeText(LoginActivity.this, message,
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
                 }
 
             }

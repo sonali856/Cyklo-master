@@ -199,14 +199,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //If details not saved
-        boolean saved = details.getBoolean("saved", false);
+      /*  boolean saved = details.getBoolean("saved", false);
         Log.i(TAG, String.valueOf(saved));
         if (!saved) {
             Intent i = new Intent(getApplicationContext(), DetailsActivity.class);
             i.putExtra("condition", detailsEditable(currentState));
             startActivity(i);
         }
-
+      */
         //If Terms and Conditions not accepted
         boolean tnc = details.getBoolean("tnc", false);
         Log.i(TAG, String.valueOf(tnc));
@@ -560,7 +560,7 @@ public class MainActivity extends AppCompatActivity {
 
                     try {
                         JSONObject jsonObject = new JSONObject(myJSON);
-                        Toast.makeText(MainActivity.this, myJSON, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(MainActivity.this, myJSON, Toast.LENGTH_SHORT).show();
                         success = jsonObject.getInt("success");
 
                     } catch (JSONException e) {
@@ -569,16 +569,14 @@ public class MainActivity extends AppCompatActivity {
 
                     if (success == 1) {
                         Log.d("Success!", message);
-                        Toast.makeText(MainActivity.this, message,
-                                Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
                         Intent i =new Intent(MainActivity.this,LoginActivity.class);
 
                         startActivity(i);
 
                     } else {
                         Log.d("Failure", message);
-                        Toast.makeText(MainActivity.this, message,
-                                Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
                     }
 
                 }
@@ -671,7 +669,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), TermsAndConditionsActivity.class));
                 break;
             case R.id.logout:
-                logout();
+                AlertDialog.Builder forlogout = new AlertDialog.Builder(this);
+                forlogout.setTitle("Logout : ")
+                        .setMessage("Are you sure, you want to logout?");
+
+                forlogout.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                       logout();
+                    }
+                });
+                forlogout.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog alert = forlogout.create();
+                alert.show();
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 public class Forget_Activity extends AppCompatActivity {
     Button forget;
     EditText email;
+    String message;
     private static final String REGISTER_URL = "http://cyklo.xyz/9999/login/forget.php";
     private static String urlSuffix;
     @Override
@@ -69,7 +70,7 @@ public class Forget_Activity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(myJSON);
                     success = jsonObject.getInt("success");
                     //  Toast.makeText(ForgetActivity.this, myJSON, Toast.LENGTH_SHORT).show();
-
+                    message = jsonObject.getString("error");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -80,7 +81,7 @@ public class Forget_Activity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 } else {
 
-                    Toast.makeText(Forget_Activity.this, "try again",
+                    Toast.makeText(Forget_Activity.this, message,
                             Toast.LENGTH_LONG).show();
                 }
 
